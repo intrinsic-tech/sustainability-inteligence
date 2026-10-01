@@ -1,0 +1,155 @@
+{
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Search indicators, sources, reports...",
+    "notifications": "Notifications, {count} unread"
+  },
+  "sidebar": {
+    "viewLabel": "View",
+    "admin": "Admin",
+    "user": "User",
+    "navLabel": "ESG sections",
+    "periodLabel": "Reporting period",
+    "periodValue": "Fiscal year 2025",
+    "support": "Support",
+    "logout": "Log out"
+  },
+  "sections": {
+    "general": "General information",
+    "automatic": "Automatic ESG",
+    "manual": "Manual ESG",
+    "approval": "Approval"
+  },
+  "footer": {
+    "lastUpdate": "Last updated: today, 09:42",
+    "localSave": "Saved locally · No data sent"
+  },
+  "general": {
+    "description": "Your organisation's core details and reporting period.",
+    "bannerTitle": "Your company profile is ready to be completed",
+    "bannerText": "Fill in the details below to give context to your ESG reporting.",
+    "formTitle": "Company details",
+    "formDescription": "Identifying information about the organisation.",
+    "requiredNote": "* Required fields",
+    "companyName": "Company name",
+    "vatNumber": "VAT number",
+    "atecoCode": "ATECO code",
+    "sector": "Business sector",
+    "sectors": {
+      "manufacturing": "Manufacturing",
+      "services": "Services",
+      "retail": "Retail",
+      "other": "Other"
+    },
+    "employees": "Number of employees",
+    "country": "Main country",
+    "countries": {
+      "italy": "Italy",
+      "france": "France",
+      "germany": "Germany",
+      "other": "Other"
+    },
+    "reportingYear": "Reporting year",
+    "saved": "Changes saved in this session",
+    "save": "Save information",
+    "footnote": "Data is used exclusively for your sustainability analysis.",
+    "moreInfo": "More information"
+  },
+  "automatic": {
+    "description": "Indicators collected from company sources and available documents.",
+    "refresh": "Refresh data",
+    "connectedSources": "Connected sources",
+    "toReview": "To review",
+    "collectedIndicators": "Indicators collected",
+    "lastSync": "Last sync",
+    "now": "Now",
+    "panelTitle": "Acquired indicators",
+    "panelDescription": "Values recorded in the 2025 reporting period.",
+    "allIndicators": "All indicators",
+    "columns": {
+      "indicator": "Indicator",
+      "source": "Source",
+      "value": "Recorded value",
+      "status": "Status",
+      "open": "Open"
+    },
+    "openRow": "Open {name}",
+    "status": {
+      "verified": "Verified",
+      "review": "To review"
+    },
+    "rows": [
+      {
+        "name": "Energy consumption",
+        "source": "Energy bill · Q4 2025",
+        "value": "184.2 MWh",
+        "status": "verified"
+      },
+      {
+        "name": "Scope 1 emissions",
+        "source": "Fleet register · 2025",
+        "value": "32.8 tCO₂e",
+        "status": "verified"
+      },
+      {
+        "name": "Water consumption",
+        "source": "Water utility invoices · 2025",
+        "value": "1,240 m³",
+        "status": "review"
+      }
+    ],
+    "syncCompleted": "Sync completed",
+    "viewAllSources": "View all sources",
+    "noteTitle": "Smart collection",
+    "noteText": "Data is organised by indicator. Review the flagged sources before moving on to approval.",
+    "downloadSummary": "Download summary"
+  },
+  "manual": {
+    "description": "Enter the qualitative and quantitative indicators that aren't available automatically.",
+    "draft": "DRAFT",
+    "progressTitle": "Your manual collection",
+    "progressText": "{done} of {total} indicators completed",
+    "formTitle": "Environment",
+    "formDescription": "Environmental impact and resource management.",
+    "renewableEnergy": "Energy from renewable sources",
+    "renewableEnergyHint": "Percentage of total energy consumption.",
+    "recycledWaste": "Waste sent for recycling",
+    "recycledWasteHint": "Share of waste sent for recovery.",
+    "initiatives": "Impact reduction initiatives",
+    "initiativesPlaceholder": "Describe the initiatives carried out in the period...",
+    "initiativesDefault": "Installation of LED lighting in production areas and optimisation of machining cycles.",
+    "saved": "Draft saved in this session",
+    "save": "Save draft",
+    "nextHint": "You can complete the collection over several sessions.",
+    "nextSection": "Next section"
+  },
+  "approval": {
+    "description": "Review the information before confirming the report.",
+    "approvedTitle": "Report approved",
+    "pendingTitle": "Almost ready",
+    "approvedText": "The confirmation has been recorded in this session.",
+    "pendingText": "Complete the final check to approve the 2025 ESG data.",
+    "approvedStatus": "APPROVED",
+    "pendingStatus": "UNDER REVIEW",
+    "checklistTitle": "Verification checklist",
+    "checklistDescription": "Confirm each item to continue.",
+    "items": [
+      "The company's general information is correct.",
+      "The automatic ESG data has been verified.",
+      "The manual ESG indicators are complete."
+    ],
+    "reversible": "Confirmation can be undone in this demo.",
+    "approved": "Approved",
+    "confirm": "Confirm approval",
+    "summary": "SUMMARY",
+    "journeyTitle": "Your ESG journey",
+    "steps": {
+      "general": "Company profile entered",
+      "automatic": "Sources synced",
+      "manual": "Indicators to confirm",
+      "approval": "Awaiting review"
+    }
+  }
+}

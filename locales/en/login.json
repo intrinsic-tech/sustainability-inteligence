@@ -1,0 +1,23 @@
+{
+  "aside": {
+    "eyebrow": "MEASURE · UNDERSTAND · IMPROVE",
+    "titleLine1": "Sustainability,",
+    "titleLine2": "made tangible.",
+    "description": "A single space to collect, read and make the most of your company's ESG performance.",
+    "footer": "Your ESG platform"
+  },
+  "eyebrow": "RESTRICTED AREA",
+  "title": "Welcome back.",
+  "subtitle": "Sign in to your corporate sustainability space.",
+  "email": "Business email",
+  "emailPlaceholder": "name@company.com",
+  "password": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "forgotPassword": "Forgot password?",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "submit": "Sign in to the platform",
+  "demoAccess": "Demo access",
+  "legal": "By continuing, you confirm that you have read the privacy policy.",
+  "copyright": "© 2026 Sustainability Intelligence"
+}

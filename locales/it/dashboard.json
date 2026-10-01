@@ -1,0 +1,155 @@
+{
+  "header": {
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "searchLabel": "Cerca",
+    "searchPlaceholder": "Cerca indicatori, fonti, report...",
+    "notifications": "Notifiche, {count} non lette"
+  },
+  "sidebar": {
+    "viewLabel": "Vista",
+    "admin": "Admin",
+    "user": "Utente",
+    "navLabel": "Sezioni ESG",
+    "periodLabel": "Periodo di rendicontazione",
+    "periodValue": "Anno fiscale 2025",
+    "support": "Supporto",
+    "logout": "Esci"
+  },
+  "sections": {
+    "general": "Informazioni generali",
+    "automatic": "ESG Automatico",
+    "manual": "ESG Manuale",
+    "approval": "Approvazione"
+  },
+  "footer": {
+    "lastUpdate": "Ultimo aggiornamento: oggi, 09:42",
+    "localSave": "Salvataggio locale · Nessun dato inviato"
+  },
+  "general": {
+    "description": "I dati di base della tua organizzazione e del periodo di rendicontazione.",
+    "bannerTitle": "Il profilo aziendale è pronto per essere completato",
+    "bannerText": "Completa i dati qui sotto per contestualizzare la tua rendicontazione ESG.",
+    "formTitle": "Anagrafica aziendale",
+    "formDescription": "Informazioni identificative dell’organizzazione.",
+    "requiredNote": "* Campi obbligatori",
+    "companyName": "Ragione sociale",
+    "vatNumber": "Partita IVA",
+    "atecoCode": "Codice ATECO",
+    "sector": "Settore di attività",
+    "sectors": {
+      "manufacturing": "Manifatturiero",
+      "services": "Servizi",
+      "retail": "Commercio",
+      "other": "Altro"
+    },
+    "employees": "Numero di dipendenti",
+    "country": "Paese principale",
+    "countries": {
+      "italy": "Italia",
+      "france": "Francia",
+      "germany": "Germania",
+      "other": "Altro"
+    },
+    "reportingYear": "Anno di rendicontazione",
+    "saved": "Modifiche salvate in questa sessione",
+    "save": "Salva informazioni",
+    "footnote": "I dati sono utilizzati esclusivamente per la tua analisi di sostenibilità.",
+    "moreInfo": "Maggiori informazioni"
+  },
+  "automatic": {
+    "description": "Indicatori raccolti da fonti aziendali e documenti disponibili.",
+    "refresh": "Aggiorna dati",
+    "connectedSources": "Fonti collegate",
+    "toReview": "Da rivedere",
+    "collectedIndicators": "Indicatori raccolti",
+    "lastSync": "Ultima sincronizzazione",
+    "now": "Adesso",
+    "panelTitle": "Indicatori acquisiti",
+    "panelDescription": "Valori rilevati nel periodo di rendicontazione 2025.",
+    "allIndicators": "Tutti gli indicatori",
+    "columns": {
+      "indicator": "Indicatore",
+      "source": "Fonte",
+      "value": "Valore rilevato",
+      "status": "Stato",
+      "open": "Apri"
+    },
+    "openRow": "Apri {name}",
+    "status": {
+      "verified": "Verificato",
+      "review": "Da rivedere"
+    },
+    "rows": [
+      {
+        "name": "Consumi energetici",
+        "source": "Bolletta energia · Q4 2025",
+        "value": "184,2 MWh",
+        "status": "verified"
+      },
+      {
+        "name": "Emissioni Scope 1",
+        "source": "Registro flotta · 2025",
+        "value": "32,8 tCO₂e",
+        "status": "verified"
+      },
+      {
+        "name": "Consumi idrici",
+        "source": "Fatture acquedotto · 2025",
+        "value": "1.240 m³",
+        "status": "review"
+      }
+    ],
+    "syncCompleted": "Sincronizzazione completata",
+    "viewAllSources": "Visualizza tutte le fonti",
+    "noteTitle": "Raccolta intelligente",
+    "noteText": "I dati vengono organizzati per indicatore. Rivedi le fonti contrassegnate prima di procedere all’approvazione.",
+    "downloadSummary": "Scarica riepilogo"
+  },
+  "manual": {
+    "description": "Inserisci gli indicatori qualitativi e quantitativi non disponibili in automatico.",
+    "draft": "BOZZA",
+    "progressTitle": "La tua raccolta manuale",
+    "progressText": "{done} indicatori completati su {total}",
+    "formTitle": "Ambiente",
+    "formDescription": "Impatto ambientale e gestione delle risorse.",
+    "renewableEnergy": "Energia da fonti rinnovabili",
+    "renewableEnergyHint": "Percentuale sul consumo energetico totale.",
+    "recycledWaste": "Rifiuti avviati a riciclo",
+    "recycledWasteHint": "Quota di rifiuti destinata al recupero.",
+    "initiatives": "Iniziative di riduzione dell’impatto",
+    "initiativesPlaceholder": "Descrivi le iniziative attuate nel periodo...",
+    "initiativesDefault": "Installazione di illuminazione LED nei reparti produttivi e ottimizzazione dei cicli di lavorazione.",
+    "saved": "Bozza salvata in questa sessione",
+    "save": "Salva bozza",
+    "nextHint": "Puoi completare la raccolta in più momenti.",
+    "nextSection": "Prossima sezione"
+  },
+  "approval": {
+    "description": "Rivedi le informazioni prima di confermare la rendicontazione.",
+    "approvedTitle": "Rendicontazione approvata",
+    "pendingTitle": "Quasi tutto pronto",
+    "approvedText": "La conferma è stata registrata in questa sessione.",
+    "pendingText": "Completa la verifica finale per approvare i dati ESG 2025.",
+    "approvedStatus": "APPROVATO",
+    "pendingStatus": "IN REVISIONE",
+    "checklistTitle": "Checklist di verifica",
+    "checklistDescription": "Conferma ogni voce per procedere.",
+    "items": [
+      "Le informazioni generali dell’azienda sono corrette.",
+      "I dati ESG automatici sono stati verificati.",
+      "Gli indicatori ESG manuali sono completi."
+    ],
+    "reversible": "La conferma è reversibile in questa demo.",
+    "approved": "Approvato",
+    "confirm": "Conferma approvazione",
+    "summary": "RIEPILOGO",
+    "journeyTitle": "Il tuo percorso ESG",
+    "steps": {
+      "general": "Profilo aziendale inserito",
+      "automatic": "Fonti sincronizzate",
+      "manual": "Indicatori da confermare",
+      "approval": "In attesa della revisione"
+    }
+  }
+}

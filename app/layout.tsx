@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { LanguageSync } from "@/components/LanguageSync";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="it" className={`${poppins.variable} h-full antialiased`}>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <LanguageSync />
+        {children}
+      </body>
     </html>
   );
 }
