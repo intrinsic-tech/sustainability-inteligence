@@ -1,69 +1,140 @@
-import Image from "next/image";
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Eye, EyeOff, Leaf, LockKeyhole, Mail } from "lucide-react";
 
 export default function Home() {
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    sessionStorage.setItem("sustainability-demo-session", "active");
+    router.push("/dashboard");
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="login-page">
+      <section className="login-aside" aria-label="Sustainability Intelligence">
+        <div className="brand-lockup brand-lockup-light">
+          <span className="brand-mark">
+            <Leaf size={21} strokeWidth={2.1} />
+          </span>
+          <span>
+            Sustainability
+            <span className="brand-lockup-second">Intelligence</span>
+          </span>
+        </div>
+        <div className="login-aside-copy">
+          <span className="eyebrow eyebrow-light">
+            MISURA · COMPRENDI · MIGLIORA
+          </span>
+          <h1>
+            La sostenibilità,
+            <br />
+            resa concreta.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p>
+            Un unico spazio per raccogliere, leggere e valorizzare le
+            performance ESG della tua azienda.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="aside-footer">
+          <span className="status-dot" /> La tua piattaforma ESG
         </div>
-      </main>
-    </div>
+        <div className="login-art" aria-hidden="true">
+          <div className="art-ring art-ring-one" />
+          <div className="art-ring art-ring-two" />
+          <div className="art-leaf">
+            <Leaf size={110} strokeWidth={0.8} />
+          </div>
+          <span className="art-coordinate">
+            44°29&apos; N<br />
+            11°20&apos; E
+          </span>
+        </div>
+      </section>
+
+      <section className="login-main">
+        <div className="login-card-wrap">
+          <div className="mobile-brand brand-lockup">
+            <span className="brand-mark">
+              <Leaf size={21} strokeWidth={2.1} />
+            </span>
+            <span>
+              Sustainability
+              <span className="brand-lockup-second">Intelligence</span>
+            </span>
+          </div>
+          <div className="login-heading">
+            <span className="eyebrow">AREA RISERVATA</span>
+            <h2>Bentornato.</h2>
+            <p>Accedi al tuo spazio di sostenibilità aziendale.</p>
+          </div>
+
+          <form className="login-form" onSubmit={handleSubmit}>
+            <label className="field-label" htmlFor="email">
+              Email aziendale
+            </label>
+            <div className="input-wrap">
+              <Mail size={18} aria-hidden="true" />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="nome@azienda.it"
+                autoComplete="email"
+                required
+              />
+            </div>
+            <div className="password-label-row">
+              <label className="field-label" htmlFor="password">
+                Password
+              </label>
+              <button className="text-button" type="button">
+                Password dimenticata?
+              </button>
+            </div>
+            <div className="input-wrap">
+              <LockKeyhole size={18} aria-hidden="true" />
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Inserisci la password"
+                autoComplete="current-password"
+                required
+                minLength={6}
+              />
+              <button
+                className="icon-button password-toggle"
+                type="button"
+                aria-label={
+                  showPassword ? "Nascondi password" : "Mostra password"
+                }
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+            <button className="button-primary login-submit" type="submit">
+              Accedi alla piattaforma <ArrowRight size={18} />
+            </button>
+          </form>
+          <div className="login-note">
+            <span className="note-rule" />
+            Accesso dimostrativo
+            <span className="note-rule" />
+          </div>
+          <p className="login-legal">
+            Proseguendo, dichiari di aver letto l’informativa sulla privacy.
+          </p>
+        </div>
+        <div className="login-copyright">
+          © 2026 Sustainability Intelligence
+        </div>
+      </section>
+    </main>
   );
 }
