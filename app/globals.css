@@ -63,7 +63,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .brand-logo img { display: block; width: auto; height: 48px; }
 .brand-logo-plate { padding: 8px 14px; border-radius: 10px; background: #0f1a1a; }
 .login-aside-logo { position: relative; z-index: 1; }
-.login-aside-logo img { height: 64px; }
+.login-aside-logo img { height: 84px; }
 .login-aside-copy { position: relative; z-index: 1; width: min(100%, 470px); margin: auto 0; padding: 50px 0 80px; animation: rise-in .55s ease both; }
 .eyebrow { display: block; color: var(--brand-teal); font-size: 10px; font-weight: 600; letter-spacing: 1px; }
 .eyebrow-light { color: #9fd7ce; }
