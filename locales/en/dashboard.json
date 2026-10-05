@@ -17,10 +17,9 @@
     "logout": "Log out"
   },
   "sections": {
-    "general": "General information",
-    "automatic": "Automatic ESG",
-    "manual": "Manual ESG",
-    "approval": "Approval"
+    "general": "Report V1",
+    "automatic": "Questionnaire",
+    "manual": "Report V2"
   },
   "footer": {
     "lastUpdate": "Last updated: today, 09:42",

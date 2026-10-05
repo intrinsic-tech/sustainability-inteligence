@@ -17,6 +17,27 @@
   "showPassword": "Show password",
   "hidePassword": "Hide password",
   "submit": "Sign in to the platform",
+  "submitting": "Signing in…",
+  "noAccount": "Don't have an account?",
+  "createAccount": "Create one",
+  "signUp": {
+    "eyebrow": "NEW ACCOUNT",
+    "title": "Create your account.",
+    "subtitle": "Join your corporate sustainability space.",
+    "name": "Full name",
+    "namePlaceholder": "Jane Doe",
+    "passwordPlaceholder": "At least 6 characters",
+    "submit": "Create account",
+    "submitting": "Creating account…",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
+  },
+  "errors": {
+    "invalid_input": "Please check your details. The password must be at least 6 characters.",
+    "email_taken": "An account with this email already exists.",
+    "invalid_credentials": "Incorrect email or password.",
+    "server_error": "Something went wrong. Please try again."
+  },
   "demoAccess": "Demo access",
   "legal": "By continuing, you confirm that you have read the privacy policy.",
   "copyright": "© 2026 Sustainability Intelligence"

@@ -17,10 +17,9 @@
     "logout": "Esci"
   },
   "sections": {
-    "general": "Informazioni generali",
-    "automatic": "ESG Automatico",
-    "manual": "ESG Manuale",
-    "approval": "Approvazione"
+    "general": "Report V1",
+    "automatic": "Questionario",
+    "manual": "Report V2"
   },
   "footer": {
     "lastUpdate": "Ultimo aggiornamento: oggi, 09:42",

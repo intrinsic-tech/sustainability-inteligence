@@ -8,17 +8,14 @@ import {
   ArrowRight,
   Bell,
   Building2,
-  Check,
   CheckCircle2,
   ChevronRight,
   CircleCheck,
   CircleHelp,
   CircleUserRound,
-  ClipboardCheck,
   Clock3,
   FileText,
   LayoutDashboard,
-  Leaf,
   LogOut,
   Menu,
   PlugZap,
@@ -32,31 +29,28 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { format, useTranslations } from "@/i18n";
 
-type SectionId = "general" | "automatic" | "manual" | "approval";
+type SectionId = "general" | "automatic" | "manual";
 
 const sections: { id: SectionId; icon: LucideIcon }[] = [
   { id: "general", icon: LayoutDashboard },
   { id: "automatic", icon: Sparkles },
   { id: "manual", icon: FileText },
-  { id: "approval", icon: ClipboardCheck },
 ];
 
 const unreadNotifications = 3;
 
 export default function DashboardPage() {
   const router = useRouter();
-  const common = useTranslations("common");
   const t = useTranslations("dashboard");
   const [activeSection, setActiveSection] = useState<SectionId>("general");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [generalSaved, setGeneralSaved] = useState(false);
   const [manualSaved, setManualSaved] = useState(false);
   const [refreshed, setRefreshed] = useState(false);
-  const [approvalChecks, setApprovalChecks] = useState([false, false, false]);
-  const [approved, setApproved] = useState(false);
   const [role, setRole] = useState<"admin" | "user">("admin");
 
   useEffect(() => {
@@ -80,15 +74,6 @@ export default function DashboardPage() {
     setManualSaved(true);
   }
 
-  function toggleApproval(index: number) {
-    setApprovalChecks((checks) =>
-      checks.map((checked, itemIndex) =>
-        itemIndex === index ? !checked : checked,
-      ),
-    );
-    setApproved(false);
-  }
-
   return (
     <main className="dashboard-shell">
       <header className="app-header">
@@ -100,10 +85,7 @@ export default function DashboardPage() {
           <Menu size={22} />
         </button>
         <a className="app-brand" href="/dashboard">
-          <span className="app-logo">
-            <Leaf size={24} strokeWidth={2.2} />
-          </span>
-          <span className="app-title">{common.brand.full}</span>
+          <BrandLogo className="app-logo" onLight priority />
         </a>
         <label className="header-search">
           <Search size={20} aria-hidden="true" />
@@ -180,11 +162,6 @@ export default function DashboardPage() {
               >
                 <Icon size={22} strokeWidth={2} />
                 <span>{t.sections[section.id]}</span>
-                {section.id === "approval" && (
-                  <span className="nav-count">
-                    {approved ? <Check size={12} /> : "1"}
-                  </span>
-                )}
                 {index === 0 && !generalSaved && <span className="nav-dot" />}
               </button>
             );
@@ -225,14 +202,6 @@ export default function DashboardPage() {
           )}
           {activeSection === "manual" && (
             <ManualSection saved={manualSaved} onSave={handleManualSave} />
-          )}
-          {activeSection === "approval" && (
-            <ApprovalSection
-              checks={approvalChecks}
-              approved={approved}
-              onToggle={toggleApproval}
-              onApprove={() => setApproved(true)}
-            />
           )}
           <footer className="dashboard-footer">
             <span>{t.footer.lastUpdate}</span>
@@ -631,131 +600,4 @@ function ManualSection({
   );
 }
 
-function ApprovalSection({
-  checks,
-  approved,
-  onToggle,
-  onApprove,
-}: {
-  checks: boolean[];
-  approved: boolean;
-  onToggle: (index: number) => void;
-  onApprove: () => void;
-}) {
-  const sections = useTranslations("dashboard").sections;
-  const t = useTranslations("dashboard").approval;
-  const readyToApprove = checks.every(Boolean);
 
-  return (
-    <>
-      <SectionHeading title={sections.approval} description={t.description} />
-      <div
-        className={`approval-banner ${approved ? "approval-banner-done" : ""}`}
-      >
-        <span className="approval-banner-icon">
-          {approved ? <CheckCircle2 size={22} /> : <ShieldCheck size={22} />}
-        </span>
-        <div>
-          <strong>{approved ? t.approvedTitle : t.pendingTitle}</strong>
-          <p>{approved ? t.approvedText : t.pendingText}</p>
-        </div>
-        <span
-          className={`approval-status ${approved ? "approval-status-done" : ""}`}
-        >
-          {approved ? t.approvedStatus : t.pendingStatus}
-        </span>
-      </div>
-      <div className="approval-layout">
-        <div className="content-panel review-panel">
-          <div className="panel-heading-row">
-            <div>
-              <h2>{t.checklistTitle}</h2>
-              <p>{t.checklistDescription}</p>
-            </div>
-            <span className="check-counter">
-              {checks.filter(Boolean).length} / {checks.length}
-            </span>
-          </div>
-          <div className="review-list">
-            {t.items.map((item, index) => (
-              <label
-                className={`review-item ${checks[index] ? "review-item-checked" : ""}`}
-                key={index}
-              >
-                <input
-                  type="checkbox"
-                  checked={checks[index]}
-                  onChange={() => onToggle(index)}
-                />
-                <span className="custom-checkbox">
-                  {checks[index] && <Check size={13} />}
-                </span>
-                <span>{item}</span>
-              </label>
-            ))}
-          </div>
-          <div className="review-footer">
-            <span>
-              <ShieldCheck size={16} /> {t.reversible}
-            </span>
-            <button
-              className="button-primary"
-              type="button"
-              disabled={!readyToApprove || approved}
-              onClick={onApprove}
-            >
-              {approved ? (
-                <>
-                  <Check size={16} /> {t.approved}
-                </>
-              ) : (
-                <>
-                  {t.confirm} <ArrowRight size={16} />
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-        <aside className="approval-side-note">
-          <div className="side-note-icon">
-            <ClipboardCheck size={20} />
-          </div>
-          <span className="eyebrow">{t.summary}</span>
-          <h2>{t.journeyTitle}</h2>
-          <div className="approval-step">
-            <span className="step-check">
-              <Check size={12} />
-            </span>
-            <div>
-              <strong>{sections.general}</strong>
-              <small>{t.steps.general}</small>
-            </div>
-          </div>
-          <div className="approval-step">
-            <span className="step-check">
-              <Check size={12} />
-            </span>
-            <div>
-              <strong>{sections.automatic}</strong>
-              <small>{t.steps.automatic}</small>
-            </div>
-          </div>
-          <div className="approval-step approval-step-current">
-            <span className="step-number">3</span>
-            <div>
-              <strong>{sections.manual}</strong>
-              <small>{t.steps.manual}</small>
-            </div>
-          </div>
-          <div className="approval-step approval-step-pending">
-            <span className="step-number">4</span>
-            <div>
-              <strong>{sections.approval}</strong>
-              <small>{t.steps.approval}</small>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </>
-  );
-}

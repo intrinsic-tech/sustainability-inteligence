@@ -17,6 +17,27 @@
   "showPassword": "Mostra password",
   "hidePassword": "Nascondi password",
   "submit": "Accedi alla piattaforma",
+  "submitting": "Accesso in corso…",
+  "noAccount": "Non hai un account?",
+  "createAccount": "Creane uno",
+  "signUp": {
+    "eyebrow": "NUOVO ACCOUNT",
+    "title": "Crea il tuo account.",
+    "subtitle": "Entra nel tuo spazio di sostenibilità aziendale.",
+    "name": "Nome completo",
+    "namePlaceholder": "Mario Rossi",
+    "passwordPlaceholder": "Almeno 6 caratteri",
+    "submit": "Crea account",
+    "submitting": "Creazione in corso…",
+    "haveAccount": "Hai già un account?",
+    "signInLink": "Accedi"
+  },
+  "errors": {
+    "invalid_input": "Controlla i dati inseriti. La password deve avere almeno 6 caratteri.",
+    "email_taken": "Esiste già un account con questa email.",
+    "invalid_credentials": "Email o password non corretti.",
+    "server_error": "Si è verificato un errore. Riprova."
+  },
   "demoAccess": "Accesso dimostrativo",
   "legal": "Proseguendo, dichiari di aver letto l’informativa sulla privacy.",
   "copyright": "© 2026 Sustainability Intelligence"
