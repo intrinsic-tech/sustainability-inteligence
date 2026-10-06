@@ -1,15 +1,18 @@
 import enCommon from "@/locales/en/common.json";
 import enDashboard from "@/locales/en/dashboard.json";
 import enLogin from "@/locales/en/login.json";
+import enReportV1 from "@/locales/en/reportV1.json";
 import itCommon from "@/locales/it/common.json";
 import itDashboard from "@/locales/it/dashboard.json";
 import itLogin from "@/locales/it/login.json";
+import itReportV1 from "@/locales/it/reportV1.json";
 import { useLanguageStore, type Language } from "@/store/useLanguageStore";
 
 const en = {
   common: enCommon,
   dashboard: enDashboard,
   login: enLogin,
+  reportV1: enReportV1,
 };
 
 export type Messages = typeof en;
@@ -20,6 +23,7 @@ const it: Messages = {
   common: itCommon,
   dashboard: itDashboard,
   login: itLogin,
+  reportV1: itReportV1,
 };
 
 const messages: Record<Language, Messages> = { en, it };

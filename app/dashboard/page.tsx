@@ -7,7 +7,6 @@ import {
   ArrowDownToLine,
   ArrowRight,
   Bell,
-  Building2,
   CheckCircle2,
   ChevronRight,
   CircleCheck,
@@ -22,7 +21,6 @@ import {
   RefreshCw,
   Save,
   Search,
-  ShieldCheck,
   ShieldUser,
   Sparkles,
   TriangleAlert,
@@ -31,7 +29,9 @@ import {
 } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ReportV1 } from "@/components/report-v1/ReportV1";
 import { format, useTranslations } from "@/i18n";
+import type { DocumentsResponse } from "@/types/report";
 
 type SectionId = "general" | "automatic" | "manual";
 
@@ -48,7 +48,7 @@ export default function DashboardPage() {
   const t = useTranslations("dashboard");
   const [activeSection, setActiveSection] = useState<SectionId>("general");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [generalSaved, setGeneralSaved] = useState(false);
+  const [report, setReport] = useState<DocumentsResponse | null>(null);
   const [manualSaved, setManualSaved] = useState(false);
   const [refreshed, setRefreshed] = useState(false);
   const [role, setRole] = useState<"admin" | "user">("admin");
@@ -62,11 +62,6 @@ export default function DashboardPage() {
   function handleLogout() {
     sessionStorage.removeItem("sustainability-demo-session");
     router.push("/");
-  }
-
-  function handleGeneralSave(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setGeneralSaved(true);
   }
 
   function handleManualSave(event: FormEvent<HTMLFormElement>) {
@@ -162,7 +157,7 @@ export default function DashboardPage() {
               >
                 <Icon size={22} strokeWidth={2} />
                 <span>{t.sections[section.id]}</span>
-                {index === 0 && !generalSaved && <span className="nav-dot" />}
+                {index === 0 && !report && <span className="nav-dot" />}
               </button>
             );
           })}
@@ -192,7 +187,11 @@ export default function DashboardPage() {
       <section className="dashboard-main">
         <div className="dashboard-content">
           {activeSection === "general" && (
-            <GeneralSection saved={generalSaved} onSave={handleGeneralSave} />
+            <ReportV1
+              title={t.sections.general}
+              report={report}
+              onReport={setReport}
+            />
           )}
           {activeSection === "automatic" && (
             <AutomaticSection
@@ -254,114 +253,6 @@ function StatCard({
         <strong>{value}</strong>
       </span>
     </div>
-  );
-}
-
-function GeneralSection({
-  saved,
-  onSave,
-}: {
-  saved: boolean;
-  onSave: (event: FormEvent<HTMLFormElement>) => void;
-}) {
-  const sectionTitle = useTranslations("dashboard").sections.general;
-  const t = useTranslations("dashboard").general;
-
-  return (
-    <>
-      <SectionHeading title={sectionTitle} description={t.description} />
-      <div className="completion-banner">
-        <div className="completion-icon">
-          <Building2 size={20} />
-        </div>
-        <div className="completion-copy">
-          <strong>{t.bannerTitle}</strong>
-          <span>{t.bannerText}</span>
-        </div>
-        <div className="completion-progress">
-          <span>75%</span>
-          <div className="progress-track">
-            <i />
-          </div>
-        </div>
-      </div>
-      <form className="data-form" onSubmit={onSave}>
-        <div className="form-section-head">
-          <div>
-            <h2>{t.formTitle}</h2>
-            <p>{t.formDescription}</p>
-          </div>
-          <span className="required-note">{t.requiredNote}</span>
-        </div>
-        <div className="form-grid">
-          <label className="form-field form-field-wide">
-            <span>
-              {t.companyName} <b>*</b>
-            </span>
-            <input defaultValue="NordEst S.r.l." required />
-          </label>
-          <label className="form-field">
-            <span>
-              {t.vatNumber} <b>*</b>
-            </span>
-            <input defaultValue="IT 02849310231" required />
-          </label>
-          <label className="form-field">
-            <span>{t.atecoCode}</span>
-            <input defaultValue="25.11.00" />
-          </label>
-          <label className="form-field">
-            <span>{t.sector}</span>
-            <select defaultValue="manufacturing">
-              {Object.entries(t.sectors).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="form-field">
-            <span>{t.employees}</span>
-            <input type="number" defaultValue="86" min="0" />
-          </label>
-          <label className="form-field">
-            <span>{t.country}</span>
-            <select defaultValue="italy">
-              {Object.entries(t.countries).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="form-field">
-            <span>{t.reportingYear}</span>
-            <select defaultValue="2025">
-              <option>2025</option>
-              <option>2024</option>
-              <option>2023</option>
-            </select>
-          </label>
-        </div>
-        <div className="form-actions">
-          <span
-            className={`save-feedback ${saved ? "save-feedback-visible" : ""}`}
-          >
-            <CheckCircle2 size={15} /> {t.saved}
-          </span>
-          <button className="button-primary" type="submit">
-            <Save size={16} /> {t.save}
-          </button>
-        </div>
-      </form>
-      <div className="info-footnote">
-        <ShieldCheck size={17} />
-        <span>{t.footnote}</span>
-        <button aria-label={t.moreInfo}>
-          <ArrowRight size={15} />
-        </button>
-      </div>
-    </>
   );
 }
 

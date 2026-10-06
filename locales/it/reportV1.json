@@ -1,0 +1,115 @@
+{
+  "description": "Inserisci i dati dell’azienda e carica i documenti per generare la prima versione del report ESG.",
+  "tabs": {
+    "general": "Informazioni generali",
+    "environmental": "Ambientale",
+    "social": "Sociale",
+    "governance": "Governance"
+  },
+  "form": {
+    "title": "Dati dell’azienda",
+    "description": "Questi dati creano il report. Solo la ragione sociale è obbligatoria.",
+    "requiredNote": "* Campo obbligatorio",
+    "companyName": "Ragione sociale",
+    "vatNumber": "Partita IVA",
+    "fiscalCode": "Codice fiscale",
+    "bankId": "ID banca",
+    "websiteUrl": "Sito web",
+    "notes": "Note"
+  },
+  "uploads": {
+    "title": "Documenti",
+    "description": "Carica la visura camerale e gli ultimi due bilanci in formato XBRL.",
+    "visura": "Visura camerale (PDF)",
+    "xbrlCurrent": "Bilancio XBRL – anno corrente",
+    "xbrlPrior": "Bilancio XBRL – anno precedente",
+    "choose": "Clicca o trascina qui un file",
+    "replace": "Clicca per sostituire"
+  },
+  "submit": "Genera report",
+  "submitting": "Generazione in corso… può richiedere alcuni minuti",
+  "newReport": "Nuovo report",
+  "errors": {
+    "validation": "Inserisci la ragione sociale e carica tutti e tre i documenti.",
+    "create": "Non è stato possibile creare il report. Controlla i dati e riprova.",
+    "documents": "Il report è stato creato, ma non è stato possibile elaborare i documenti.",
+    "network": "Impossibile raggiungere il server. Riprova."
+  },
+  "empty": {
+    "title": "Nessun dato disponibile",
+    "text": "Invia le informazioni generali e i documenti per generare questa sezione."
+  },
+  "result": {
+    "success": "Report generato",
+    "reportId": "ID report",
+    "identity": "Anagrafica",
+    "workforce": "Personale",
+    "financials": "Indicatori finanziari",
+    "history": "Andamento triennale",
+    "year": "Anno",
+    "revenue": "Ricavi",
+    "mol": "MOL",
+    "molMargin": "Margine MOL",
+    "locations": "Sedi",
+    "excluded": "Esclusa",
+    "website": "Profilo aziendale",
+    "flags": "Segnalazioni",
+    "noFlags": "Nessuna segnalazione.",
+    "documents": "Documenti acquisiti",
+    "fields": {
+      "company_name": "Ragione sociale",
+      "vat_number": "Partita IVA",
+      "fiscal_code": "Codice fiscale",
+      "legal_form": "Forma giuridica",
+      "incorporation_date": "Data di costituzione",
+      "rea_code": "Codice REA",
+      "pec_email": "PEC",
+      "primary_ateco": "ATECO primario",
+      "governance_system": "Sistema di amministrazione",
+      "share_capital_subscribed": "Capitale sociale",
+      "headcount_inps": "Dipendenti (INPS)",
+      "headcount_period": "Data rilevazione",
+      "headcount_statement_average": "Dipendenti medi",
+      "personnel_cost_per_employee_formatted": "Costo per dipendente",
+      "revenue_formatted": "Ricavi",
+      "revenue_growth_yoy": "Crescita ricavi",
+      "mol_formatted": "MOL",
+      "mol_margin_formatted": "Margine MOL",
+      "roe_formatted": "ROE",
+      "equity_ratio_formatted": "Indice di patrimonializzazione",
+      "debt_to_equity_formatted": "Debiti / patrimonio",
+      "interest_cover_formatted": "Copertura interessi",
+      "total_assets_formatted": "Totale attivo",
+      "total_debt_formatted": "Totale debiti",
+      "receivable_days_formatted": "Giorni di incasso"
+    }
+  },
+  "theme": {
+    "risk": "Rischio",
+    "opportunity": "Opportunità",
+    "whyMaterial": "Perché è rilevante",
+    "analysis": "Analisi",
+    "evidence": "Evidenze",
+    "creditRelevance": "Rilevanza per il credito",
+    "risks": "Rischi",
+    "opportunities": "Opportunità",
+    "recommendations": "Raccomandazioni",
+    "kpis": "KPI",
+    "meetingQuestions": "Domande per l’incontro con l’azienda",
+    "shareholders": "Soci",
+    "administrators": "Amministratori",
+    "status": {
+      "generated": "Generato",
+      "pending": "In attesa"
+    }
+  },
+  "hazards": {
+    "title": "Rischio fisico per tipologia",
+    "overall": "Punteggio complessivo",
+    "hazard": "Pericolo",
+    "score": "Punteggio",
+    "today": "Oggi",
+    "in2050": "2050",
+    "trend": "Tendenza"
+  }
+}

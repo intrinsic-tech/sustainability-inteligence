@@ -1,0 +1,115 @@
+{
+  "description": "Enter the company details and upload its documents to generate the first version of the ESG report.",
+  "tabs": {
+    "general": "General information",
+    "environmental": "Environmental",
+    "social": "Social",
+    "governance": "Governance"
+  },
+  "form": {
+    "title": "Company details",
+    "description": "These details create the report. Only the company name is mandatory.",
+    "requiredNote": "* Required field",
+    "companyName": "Company name",
+    "vatNumber": "VAT number",
+    "fiscalCode": "Fiscal code",
+    "bankId": "Bank ID",
+    "websiteUrl": "Website URL",
+    "notes": "Notes"
+  },
+  "uploads": {
+    "title": "Documents",
+    "description": "Upload the Chamber of Commerce extract and the last two XBRL balance sheets.",
+    "visura": "Chamber of Commerce extract (PDF)",
+    "xbrlCurrent": "XBRL balance sheet – current year",
+    "xbrlPrior": "XBRL balance sheet – prior year",
+    "choose": "Click or drag a file here",
+    "replace": "Click to replace"
+  },
+  "submit": "Generate report",
+  "submitting": "Generating report… this can take a few minutes",
+  "newReport": "New report",
+  "errors": {
+    "validation": "Please fill in the company name and upload all three documents.",
+    "create": "The report could not be created. Please check the details and try again.",
+    "documents": "The report was created, but the documents could not be processed.",
+    "network": "The server could not be reached. Please try again."
+  },
+  "empty": {
+    "title": "No data yet",
+    "text": "Submit the general information and documents to generate this section."
+  },
+  "result": {
+    "success": "Report generated",
+    "reportId": "Report ID",
+    "identity": "Company identity",
+    "workforce": "Workforce",
+    "financials": "Financial metrics",
+    "history": "Three-year history",
+    "year": "Year",
+    "revenue": "Revenue",
+    "mol": "EBITDA",
+    "molMargin": "EBITDA margin",
+    "locations": "Locations",
+    "excluded": "Excluded",
+    "website": "Business profile",
+    "flags": "Flags",
+    "noFlags": "No flags raised.",
+    "documents": "Documents ingested",
+    "fields": {
+      "company_name": "Company name",
+      "vat_number": "VAT number",
+      "fiscal_code": "Fiscal code",
+      "legal_form": "Legal form",
+      "incorporation_date": "Incorporation date",
+      "rea_code": "REA code",
+      "pec_email": "PEC email",
+      "primary_ateco": "Primary ATECO",
+      "governance_system": "Governance system",
+      "share_capital_subscribed": "Share capital",
+      "headcount_inps": "Headcount (INPS)",
+      "headcount_period": "Headcount date",
+      "headcount_statement_average": "Average headcount",
+      "personnel_cost_per_employee_formatted": "Cost per employee",
+      "revenue_formatted": "Revenue",
+      "revenue_growth_yoy": "Revenue growth",
+      "mol_formatted": "EBITDA",
+      "mol_margin_formatted": "EBITDA margin",
+      "roe_formatted": "ROE",
+      "equity_ratio_formatted": "Equity ratio",
+      "debt_to_equity_formatted": "Debt / equity",
+      "interest_cover_formatted": "Interest cover",
+      "total_assets_formatted": "Total assets",
+      "total_debt_formatted": "Total debt",
+      "receivable_days_formatted": "Receivable days"
+    }
+  },
+  "theme": {
+    "risk": "Risk",
+    "opportunity": "Opportunity",
+    "whyMaterial": "Why it matters",
+    "analysis": "Analysis",
+    "evidence": "Evidence",
+    "creditRelevance": "Credit relevance",
+    "risks": "Risks",
+    "opportunities": "Opportunities",
+    "recommendations": "Recommendations",
+    "kpis": "KPIs",
+    "meetingQuestions": "Questions for the company meeting",
+    "shareholders": "Shareholders",
+    "administrators": "Administrators",
+    "status": {
+      "generated": "Generated",
+      "pending": "Pending"
+    }
+  },
+  "hazards": {
+    "title": "Physical risk by hazard",
+    "overall": "Overall score",
+    "hazard": "Hazard",
+    "score": "Score",
+    "today": "Today",
+    "in2050": "2050",
+    "trend": "Trend"
+  }
+}
