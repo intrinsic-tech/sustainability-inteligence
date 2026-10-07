@@ -19,12 +19,15 @@
   },
   "uploads": {
     "title": "Documents",
-    "description": "Upload the Chamber of Commerce extract and the last two XBRL balance sheets.",
+    "description": "Upload the Chamber of Commerce extract and the last two XBRL balance sheets. You can also add any further documents.",
     "visura": "Chamber of Commerce extract (PDF)",
     "xbrlCurrent": "XBRL balance sheet – current year",
     "xbrlPrior": "XBRL balance sheet – prior year",
     "choose": "Click or drag a file here",
-    "replace": "Click to replace"
+    "replace": "Click to replace",
+    "extra": "Additional documents (optional)",
+    "extraHint": "PDF or any other format · click or drag one or more files here",
+    "remove": "Remove {name}"
   },
   "submit": "Generate report",
   "submitting": "Generating report… this can take a few minutes",

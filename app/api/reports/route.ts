@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { getSessionUser } from "@/lib/auth/session";
 
 // Document ingestion runs parsing, georisk and website analysis, so it can take minutes.
 export const maxDuration = 300;
@@ -34,6 +35,10 @@ async function readBody(response: Response) {
 }
 
 export async function POST(request: Request) {
+  if (!(await getSessionUser())) {
+    return Response.json({ error: "unauthorized" }, { status: 401 });
+  }
+
   const formData = await request.formData();
 
   // Empty inputs are omitted so the backend applies its own defaults (e.g. bank_id).
@@ -63,6 +68,10 @@ export async function POST(request: Request) {
 
   const documents = new FormData();
   for (const [name, file] of files) documents.append(name, file as File);
+  // Optional additional documents of any format.
+  for (const file of formData.getAll("files")) {
+    if (file instanceof File && file.size > 0) documents.append("files", file);
+  }
 
   const documentsResponse = await fetch(
     backendUrl(`/reports/${encodeURIComponent(created.id)}/documents`),

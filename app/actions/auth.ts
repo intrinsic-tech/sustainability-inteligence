@@ -1,7 +1,10 @@
 "use server";
 
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 import { z } from "zod";
+import type { SessionUser } from "@/lib/auth/access-token";
+import { createSession } from "@/lib/auth/session";
 import { createServerSupabase } from "@/lib/supabase-server";
 
 export type AuthErrorCode =
@@ -9,13 +12,6 @@ export type AuthErrorCode =
   | "email_taken"
   | "invalid_credentials"
   | "server_error";
-
-export type SessionUser = {
-  id: string | number;
-  name: string;
-  email: string;
-  role: string;
-};
 
 export type AuthResult =
   | { ok: true; user: SessionUser }
@@ -71,7 +67,7 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
     return { ok: false, error: "server_error" };
   }
 
-  return { ok: true, user: data };
+  return startSession(data);
 }
 
 export async function signIn(formData: FormData): Promise<AuthResult> {
@@ -99,8 +95,15 @@ export async function signIn(formData: FormData): Promise<AuthResult> {
     return { ok: false, error: "invalid_credentials" };
   }
 
-  return {
-    ok: true,
-    user: { id: data.id, name: data.name, email: data.email, role: data.role },
-  };
+  return startSession({ id: data.id, name: data.name, email: data.email, role: data.role });
+}
+
+async function startSession(user: SessionUser): Promise<AuthResult> {
+  try {
+    await createSession(user, await cookies());
+  } catch (error) {
+    console.error("createSession failed", error);
+    return { ok: false, error: "server_error" };
+  }
+  return { ok: true, user };
 }

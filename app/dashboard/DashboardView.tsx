@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Activity,
   ArrowDownToLine,
   ArrowRight,
-  Bell,
   CheckCircle2,
   ChevronRight,
   CircleCheck,
@@ -41,9 +41,7 @@ const sections: { id: SectionId; icon: LucideIcon }[] = [
   { id: "manual", icon: FileText },
 ];
 
-const unreadNotifications = 3;
-
-export default function DashboardPage() {
+export function DashboardView({ userName }: { userName: string }) {
   const router = useRouter();
   const t = useTranslations("dashboard");
   const [activeSection, setActiveSection] = useState<SectionId>("general");
@@ -53,15 +51,9 @@ export default function DashboardPage() {
   const [refreshed, setRefreshed] = useState(false);
   const [role, setRole] = useState<"admin" | "user">("admin");
 
-  useEffect(() => {
-    if (sessionStorage.getItem("sustainability-demo-session") !== "active") {
-      router.replace("/");
-    }
-  }, [router]);
-
-  function handleLogout() {
-    sessionStorage.removeItem("sustainability-demo-session");
-    router.push("/");
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" }).catch(() => undefined);
+    router.replace("/");
   }
 
   function handleManualSave(event: FormEvent<HTMLFormElement>) {
@@ -89,18 +81,15 @@ export default function DashboardPage() {
         </label>
         <div className="header-actions">
           <LanguageSwitcher />
-          <button
-            className="icon-button notification-button"
-            aria-label={format(t.header.notifications, {
-              count: unreadNotifications,
-            })}
-          >
-            <Bell size={22} fill="currentColor" />
-            <span className="notification-badge">{unreadNotifications}</span>
-          </button>
           <span className="header-user">
-            <span className="header-user-name">Marco Rossi</span>
-            <CircleUserRound size={36} strokeWidth={1.6} />
+            <span className="header-user-name">{userName}</span>
+            <Link
+              className="icon-button header-profile-link"
+              href="/profile"
+              aria-label={t.header.editProfile}
+            >
+              <CircleUserRound size={36} strokeWidth={1.6} />
+            </Link>
           </span>
         </div>
       </header>

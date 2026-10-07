@@ -4,7 +4,7 @@
     "closeMenu": "Close menu",
     "searchLabel": "Search",
     "searchPlaceholder": "Search indicators, sources, reports...",
-    "notifications": "Notifications, {count} unread"
+    "editProfile": "Edit profile"
   },
   "sidebar": {
     "viewLabel": "View",

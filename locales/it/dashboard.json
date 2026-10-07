@@ -4,7 +4,7 @@
     "closeMenu": "Chiudi menu",
     "searchLabel": "Cerca",
     "searchPlaceholder": "Cerca indicatori, fonti, report...",
-    "notifications": "Notifiche, {count} non lette"
+    "editProfile": "Modifica profilo"
   },
   "sidebar": {
     "viewLabel": "Vista",

@@ -1,0 +1,24 @@
+{
+  "back": "Torna alla dashboard",
+  "title": "Profilo",
+  "description": "Aggiorna il tuo nome e la tua password.",
+  "detailsTitle": "Dati dell'account",
+  "name": "Nome",
+  "passwordTitle": "Cambia password",
+  "passwordDescription": "Lascia questi campi vuoti per mantenere la password attuale. Cambiandola verrai disconnesso dagli altri dispositivi.",
+  "currentPassword": "Password attuale",
+  "newPassword": "Nuova password",
+  "newPasswordHint": "Almeno 6 caratteri.",
+  "confirmPassword": "Conferma nuova password",
+  "save": "Salva modifiche",
+  "saving": "Salvataggio...",
+  "saved": "Modifiche salvate",
+  "errors": {
+    "unauthorized": "La sessione è scaduta. Accedi di nuovo.",
+    "invalid_name": "Inserisci un nome di massimo 120 caratteri.",
+    "invalid_password": "La nuova password deve contenere da 6 a 72 caratteri.",
+    "password_mismatch": "Le nuove password non coincidono.",
+    "wrong_password": "La password attuale non è corretta.",
+    "server_error": "Si è verificato un errore. Riprova."
+  }
+}

@@ -1,10 +1,12 @@
 import enCommon from "@/locales/en/common.json";
 import enDashboard from "@/locales/en/dashboard.json";
 import enLogin from "@/locales/en/login.json";
+import enProfile from "@/locales/en/profile.json";
 import enReportV1 from "@/locales/en/reportV1.json";
 import itCommon from "@/locales/it/common.json";
 import itDashboard from "@/locales/it/dashboard.json";
 import itLogin from "@/locales/it/login.json";
+import itProfile from "@/locales/it/profile.json";
 import itReportV1 from "@/locales/it/reportV1.json";
 import { useLanguageStore, type Language } from "@/store/useLanguageStore";
 
@@ -12,6 +14,7 @@ const en = {
   common: enCommon,
   dashboard: enDashboard,
   login: enLogin,
+  profile: enProfile,
   reportV1: enReportV1,
 };
 
@@ -23,6 +26,7 @@ const it: Messages = {
   common: itCommon,
   dashboard: itDashboard,
   login: itLogin,
+  profile: itProfile,
   reportV1: itReportV1,
 };
 

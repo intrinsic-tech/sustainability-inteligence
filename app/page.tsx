@@ -45,8 +45,6 @@ export default function Home() {
         setError(result.error);
         return;
       }
-      sessionStorage.setItem("sustainability-demo-session", "active");
-      sessionStorage.setItem("sustainability-user", JSON.stringify(result.user));
       router.push("/dashboard");
     });
   }

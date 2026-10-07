@@ -5,14 +5,17 @@ import {
   CheckCircle2,
   FileSpreadsheet,
   FileText,
+  FilePlus2,
   Inbox,
   LoaderCircle,
   Plus,
   Send,
   TriangleAlert,
   UploadCloud,
+  X,
 } from "lucide-react";
-import { useTranslations } from "@/i18n";
+import { format, useTranslations } from "@/i18n";
+import { apiFetch } from "@/lib/api-client";
 import type {
   DocumentsResponse,
   EnvironmentalSection,
@@ -42,6 +45,8 @@ const uploads = [
 ] as const;
 
 type UploadName = (typeof uploads)[number]["name"];
+
+const fileKey = (file: File) => `${file.name}:${file.size}:${file.lastModified}`;
 
 export function ReportV1({
   title,
@@ -153,12 +158,15 @@ function IntakeForm({
   onReport: (report: DocumentsResponse) => void;
 }) {
   const [files, setFiles] = useState<Partial<Record<UploadName, File>>>({});
+  // Optional extra documents (any format), sent to the backend as repeated `files` fields.
+  const [extraFiles, setExtraFiles] = useState<File[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<SubmitError | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    for (const file of extraFiles) formData.append("files", file);
     if (uploads.some(({ name }) => !files[name])) {
       setError("validation");
       return;
@@ -167,7 +175,7 @@ function IntakeForm({
     setPending(true);
     setError(null);
     try {
-      const response = await fetch("/api/reports", { method: "POST", body: formData });
+      const response = await apiFetch("/api/reports", { method: "POST", body: formData });
       const body = await response.json();
       if (!response.ok) {
         console.error("Report generation failed", body);
@@ -259,6 +267,54 @@ function IntakeForm({
             </label>
           );
         })}
+        <label className="upload-zone upload-zone-extra">
+          <input
+            type="file"
+            multiple
+            disabled={pending}
+            onChange={(event) => {
+              const selected = Array.from(event.target.files ?? []);
+              // Reset so the same file can be picked again after removing it.
+              event.target.value = "";
+              setExtraFiles((current) => {
+                const known = new Set(current.map(fileKey));
+                return [...current, ...selected.filter((file) => !known.has(fileKey(file)))];
+              });
+            }}
+          />
+          <span className="upload-icon">
+            <FilePlus2 size={22} />
+          </span>
+          <strong>{t.uploads.extra}</strong>
+          <span className="upload-hint">
+            <UploadCloud size={15} /> {t.uploads.extraHint}
+          </span>
+        </label>
+        {extraFiles.length > 0 && (
+          <ul className="upload-extra-list">
+            {extraFiles.map((file) => (
+              <li key={fileKey(file)}>
+                <FileText size={16} />
+                <span>
+                  {file.name} · {formatSize(file.size)}
+                </span>
+                <button
+                  type="button"
+                  className="icon-button"
+                  disabled={pending}
+                  aria-label={format(t.uploads.remove, { name: file.name })}
+                  onClick={() =>
+                    setExtraFiles((current) =>
+                      current.filter((item) => fileKey(item) !== fileKey(file)),
+                    )
+                  }
+                >
+                  <X size={16} />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {error && (

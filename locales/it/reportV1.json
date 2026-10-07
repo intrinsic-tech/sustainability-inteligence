@@ -19,12 +19,15 @@
   },
   "uploads": {
     "title": "Documenti",
-    "description": "Carica la visura camerale e gli ultimi due bilanci in formato XBRL.",
+    "description": "Carica la visura camerale e gli ultimi due bilanci in formato XBRL. Puoi aggiungere anche altri documenti.",
     "visura": "Visura camerale (PDF)",
     "xbrlCurrent": "Bilancio XBRL – anno corrente",
     "xbrlPrior": "Bilancio XBRL – anno precedente",
     "choose": "Clicca o trascina qui un file",
-    "replace": "Clicca per sostituire"
+    "replace": "Clicca per sostituire",
+    "extra": "Documenti aggiuntivi (facoltativi)",
+    "extraHint": "PDF o qualsiasi altro formato · clicca o trascina uno o più file qui",
+    "remove": "Rimuovi {name}"
   },
   "submit": "Genera report",
   "submitting": "Generazione in corso… può richiedere alcuni minuti",

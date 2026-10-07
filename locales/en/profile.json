@@ -1,0 +1,24 @@
+{
+  "back": "Back to dashboard",
+  "title": "Profile",
+  "description": "Update your name and password.",
+  "detailsTitle": "Account details",
+  "name": "Name",
+  "passwordTitle": "Change password",
+  "passwordDescription": "Leave these fields empty to keep your current password. Changing it signs you out on other devices.",
+  "currentPassword": "Current password",
+  "newPassword": "New password",
+  "newPasswordHint": "At least 6 characters.",
+  "confirmPassword": "Confirm new password",
+  "save": "Save changes",
+  "saving": "Saving...",
+  "saved": "Changes saved",
+  "errors": {
+    "unauthorized": "Your session has expired. Please sign in again.",
+    "invalid_name": "Enter a name of up to 120 characters.",
+    "invalid_password": "The new password must be 6 to 72 characters long.",
+    "password_mismatch": "The new passwords don't match.",
+    "wrong_password": "The current password is incorrect.",
+    "server_error": "Something went wrong. Please try again."
+  }
+}
