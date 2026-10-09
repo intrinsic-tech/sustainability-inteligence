@@ -30,13 +30,16 @@
     "submit": "Create account",
     "submitting": "Creating account…",
     "haveAccount": "Already have an account?",
-    "signInLink": "Sign in"
+    "signInLink": "Sign in",
+    "pendingNotice": "Account created. An admin needs to approve it before you can sign in."
   },
   "errors": {
     "invalid_input": "Please check your details. The password must be at least 6 characters.",
     "email_taken": "An account with this email already exists.",
     "invalid_credentials": "Incorrect email or password.",
-    "server_error": "Something went wrong. Please try again."
+    "server_error": "Something went wrong. Please try again.",
+    "pending_approval": "Your account is waiting for admin approval. You can sign in once it's approved.",
+    "account_rejected": "Your account request was rejected. Please contact an administrator."
   },
   "demoAccess": "Demo access",
   "legal": "By continuing, you confirm that you have read the privacy policy.",

@@ -101,6 +101,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .login-note { display: flex; align-items: center; gap: 12px; margin-top: 29px; color: #929d9c; font-size: 10px; }
 .field-spacer { height: 8px; }
 .form-error { margin: 6px 0 0; padding: 10px 12px; color: #9b2c2c; border: 1px solid #f1c9c9; border-radius: 4px; background: #fdf3f3; font-size: 11px; }
+.form-notice { margin: 6px 0 0; padding: 10px 12px; color: #2e6b3a; border: 1px solid #c6e3cc; border-radius: 4px; background: #f1f9f3; font-size: 11px; }
 .auth-switch { display: flex; align-items: center; justify-content: center; gap: 5px; margin: 18px 0 0; color: #748080; font-size: 11px; }
 .note-rule { height: 1px; flex: 1; background: #e2e7e5; }
 .login-legal { margin: 26px 0 0; color: #9ba4a3; font-size: 10px; text-align: center; }
@@ -124,6 +125,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .header-user { display: flex; align-items: center; gap: 12px; color: #5b6666; }
 .header-user-name { color: #1d2828; font-size: 15px; }
 .dashboard-shell .header-profile-link { width: 44px; height: 44px; color: inherit; }
+.dashboard-shell .header-approvals { position: relative; width: 44px; height: 44px; }
+.dashboard-shell .header-approvals-active { color: var(--primary); background: var(--hover); }
+.header-badge { position: absolute; top: 2px; right: 0; display: grid; min-width: 18px; height: 18px; place-items: center; padding: 0 5px; color: #fff; border: 2px solid #fff; border-radius: 999px; background: #d32f2f; font-size: 10px; font-weight: 600; line-height: 1; box-sizing: content-box; }
+.user-self { color: #6f7b7b; font-size: 13px; }
+.user-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.user-actions .button-primary, .user-actions .button-secondary { min-height: 34px; padding: 0 12px; font-size: 13px; }
+.user-actions button:disabled { opacity: .6; cursor: progress; }
+.user-remove:hover:not(:disabled) { color: #b42318; background: #fdecea; }
 .profile-main { margin-left: 0; }
 .profile-main .dashboard-content { width: min(100%, 760px); }
 .profile-back { margin-bottom: 20px; text-decoration: none; }
@@ -231,6 +240,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .status-pill > span { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
 .status-verified { color: #2e7d32; background: #e8f5ea; }
 .status-review { color: #b26a00; background: #fff4e0; }
+.status-rejected { color: #b42318; background: #fdecea; }
 .row-arrow { display: grid; width: 34px; height: 34px; place-items: center; color: #5b6666; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
 .row-arrow:hover { color: var(--primary); background: var(--hover); }
 .panel-bottom { display: flex; min-height: 56px; align-items: center; justify-content: space-between; gap: 12px; padding: 0 24px; border-top: 1px solid #ebeeee; }

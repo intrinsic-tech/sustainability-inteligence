@@ -2,7 +2,9 @@
   "header": {
     "openMenu": "Apri menu",
     "closeMenu": "Chiudi menu",
-    "editProfile": "Modifica profilo"
+    "editProfile": "Modifica profilo",
+    "userApprovals": "Approvazione utenti",
+    "userApprovalsPending": "Approvazione utenti ({count} in attesa)"
   },
   "sidebar": {
     "heading": "Report ESG",
@@ -14,7 +16,8 @@
   "sections": {
     "general": "Report V1",
     "automatic": "Questionario",
-    "manual": "Report V2"
+    "manual": "Report V2",
+    "approvals": "Approvazione utenti"
   },
   "footer": {
     "lastUpdate": "Ultimo aggiornamento: oggi, 09:42",
@@ -144,6 +147,39 @@
       "automatic": "Fonti sincronizzate",
       "manual": "Indicatori da confermare",
       "approval": "In attesa della revisione"
+    }
+  },
+  "approvals": {
+    "description": "Approva i nuovi account prima che possano accedere, oppure rimuovi gli utenti.",
+    "refresh": "Aggiorna",
+    "columns": {
+      "name": "Nome",
+      "email": "Email",
+      "role": "Ruolo",
+      "status": "Stato",
+      "actions": "Azioni"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "Utente"
+    },
+    "status": {
+      "approved": "Approvato",
+      "pending": "In attesa",
+      "rejected": "Rifiutato"
+    },
+    "you": "(tu)",
+    "approve": "Approva",
+    "reject": "Rifiuta",
+    "remove": "Rimuovi {name}",
+    "confirmRemove": "Rimuovere {name}? L'account verrà eliminato definitivamente.",
+    "empty": "Nessun utente.",
+    "loading": "Caricamento utenti…",
+    "errors": {
+      "unauthorized": "Non hai più accesso come admin.",
+      "invalid_input": "Richiesta non valida. Aggiorna la pagina e riprova.",
+      "self_action": "Non puoi modificare o rimuovere il tuo account da qui.",
+      "server_error": "Si è verificato un errore. Riprova."
     }
   }
 }

@@ -30,13 +30,16 @@
     "submit": "Crea account",
     "submitting": "Creazione in corso…",
     "haveAccount": "Hai già un account?",
-    "signInLink": "Accedi"
+    "signInLink": "Accedi",
+    "pendingNotice": "Account creato. Un admin deve approvarlo prima che tu possa accedere."
   },
   "errors": {
     "invalid_input": "Controlla i dati inseriti. La password deve avere almeno 6 caratteri.",
     "email_taken": "Esiste già un account con questa email.",
     "invalid_credentials": "Email o password non corretti.",
-    "server_error": "Si è verificato un errore. Riprova."
+    "server_error": "Si è verificato un errore. Riprova.",
+    "pending_approval": "Il tuo account è in attesa di approvazione da parte di un admin. Potrai accedere una volta approvato.",
+    "account_rejected": "La tua richiesta di account è stata rifiutata. Contatta un amministratore."
   },
   "demoAccess": "Accesso dimostrativo",
   "legal": "Proseguendo, dichiari di aver letto l’informativa sulla privacy.",

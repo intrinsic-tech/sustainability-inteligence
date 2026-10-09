@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import { z } from "zod";
 import type { SessionUser } from "@/lib/auth/access-token";
+import type { Permission } from "@/lib/auth/permissions";
 import { createSession } from "@/lib/auth/session";
 import { createServerSupabase } from "@/lib/supabase-server";
 
@@ -11,10 +12,14 @@ export type AuthErrorCode =
   | "invalid_input"
   | "email_taken"
   | "invalid_credentials"
+  | "pending_approval"
+  | "account_rejected"
   | "server_error";
 
 export type AuthResult =
   | { ok: true; user: SessionUser }
+  // Sign-up succeeded, but the account can't be used until an admin approves it.
+  | { ok: true; pending: true }
   | { ok: false; error: AuthErrorCode };
 
 const SALT_ROUNDS = 12;
@@ -56,18 +61,18 @@ export async function signUp(formData: FormData): Promise<AuthResult> {
 
   const { data, error } = await supabase
     .from("Users")
-    .insert({ name, email, password: hashedPassword, role: "user" })
-    .select("id, name, email, role")
+    .insert({ name, email, password: hashedPassword, role: "user", permission: "pending" })
+    .select("id")
     .single();
 
-  if (error) {
+  if (error || !data) {
     // 23505 = unique_violation, in case the email column has a unique index.
-    if (error.code === "23505") return { ok: false, error: "email_taken" };
+    if (error?.code === "23505") return { ok: false, error: "email_taken" };
     console.error("signUp insert failed", error);
     return { ok: false, error: "server_error" };
   }
 
-  return startSession(data);
+  return { ok: true, pending: true };
 }
 
 export async function signIn(formData: FormData): Promise<AuthResult> {
@@ -82,7 +87,7 @@ export async function signIn(formData: FormData): Promise<AuthResult> {
 
   const { data, error } = await supabase
     .from("Users")
-    .select("id, name, email, role, password")
+    .select("id, name, email, role, permission, password")
     .eq("email", email)
     .maybeSingle();
 
@@ -94,6 +99,11 @@ export async function signIn(formData: FormData): Promise<AuthResult> {
   if (!data || !(await bcrypt.compare(password, data.password ?? ""))) {
     return { ok: false, error: "invalid_credentials" };
   }
+
+  // Only checked after the password, so it doesn't reveal which emails are registered.
+  const permission: Permission | null = data.permission;
+  if (permission === "rejected") return { ok: false, error: "account_rejected" };
+  if (permission !== "approved") return { ok: false, error: "pending_approval" };
 
   return startSession({ id: data.id, name: data.name, email: data.email, role: data.role });
 }

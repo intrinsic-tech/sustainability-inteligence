@@ -21,16 +21,18 @@ import {
   Save,
   Sparkles,
   TriangleAlert,
+  UserCheck,
   X,
   type LucideIcon,
 } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ReportV1 } from "@/components/report-v1/ReportV1";
+import { UserApprovals } from "@/components/UserApprovals";
 import { format, useTranslations } from "@/i18n";
 import type { DocumentsResponse } from "@/types/report";
 
-type SectionId = "general" | "automatic" | "manual";
+type SectionId = "general" | "automatic" | "manual" | "approvals";
 
 const sections: { id: SectionId; icon: LucideIcon }[] = [
   { id: "general", icon: LayoutDashboard },
@@ -38,7 +40,17 @@ const sections: { id: SectionId; icon: LucideIcon }[] = [
   { id: "manual", icon: FileText },
 ];
 
-export function DashboardView({ userName }: { userName: string }) {
+export function DashboardView({
+  userId,
+  userName,
+  isAdmin,
+  pendingCount: initialPendingCount,
+}: {
+  userId: string;
+  userName: string;
+  isAdmin: boolean;
+  pendingCount: number;
+}) {
   const router = useRouter();
   const t = useTranslations("dashboard");
   const common = useTranslations("common");
@@ -47,6 +59,7 @@ export function DashboardView({ userName }: { userName: string }) {
   const [report, setReport] = useState<DocumentsResponse | null>(null);
   const [manualSaved, setManualSaved] = useState(false);
   const [refreshed, setRefreshed] = useState(false);
+  const [pendingCount, setPendingCount] = useState(initialPendingCount);
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" }).catch(() => undefined);
@@ -74,6 +87,22 @@ export function DashboardView({ userName }: { userName: string }) {
         <h1 className="header-title">{common.brand.full}</h1>
         <div className="header-actions">
           <LanguageSwitcher />
+          {isAdmin && (
+            <button
+              className={`icon-button header-approvals ${activeSection === "approvals" ? "header-approvals-active" : ""}`}
+              aria-label={
+                pendingCount > 0
+                  ? format(t.header.userApprovalsPending, { count: pendingCount })
+                  : t.header.userApprovals
+              }
+              title={t.header.userApprovals}
+              aria-pressed={activeSection === "approvals"}
+              onClick={() => setActiveSection("approvals")}
+            >
+              <UserCheck size={24} strokeWidth={1.8} />
+              {pendingCount > 0 && <span className="header-badge">{pendingCount}</span>}
+            </button>
+          )}
           <span className="header-user">
             <span className="header-user-name">{userName}</span>
             <Link
@@ -160,6 +189,9 @@ export function DashboardView({ userName }: { userName: string }) {
           )}
           {activeSection === "manual" && (
             <ManualSection saved={manualSaved} onSave={handleManualSave} />
+          )}
+          {activeSection === "approvals" && isAdmin && (
+            <UserApprovals currentUserId={userId} onPendingChange={setPendingCount} />
           )}
           <footer className="dashboard-footer">
             <span>{t.footer.lastUpdate}</span>

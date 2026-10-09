@@ -106,16 +106,18 @@ export async function rotateSession(refreshToken: string, jar: CookieJar) {
     .select("id");
   if (!claimed?.length) return null;
 
-  // Re-read the user so role/name changes and deleted accounts take effect on refresh.
-  const { data: user } = await supabase
+  // Re-read the user so role/name changes, revoked approval and deleted accounts
+  // take effect on refresh.
+  const { data: row } = await supabase
     .from("Users")
-    .select("id, name, email, role")
+    .select("id, name, email, role, permission")
     .eq("id", stored.user_id)
     .maybeSingle();
-  if (!user) return null;
+  if (!row || row.permission !== "approved") return null;
 
+  const user: SessionUser = { id: row.id, name: row.name, email: row.email, role: row.role };
   await createSession(user, jar);
-  return user as SessionUser;
+  return user;
 }
 
 export async function revokeSession(refreshToken: string) {

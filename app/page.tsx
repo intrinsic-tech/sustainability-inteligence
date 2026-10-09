@@ -22,6 +22,7 @@ export default function Home() {
   const [mode, setMode] = useState<Mode>("signIn");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<AuthErrorCode | null>(null);
+  const [notice, setNotice] = useState(false);
   const [pending, startTransition] = useTransition();
   const common = useTranslations("common");
   const t = useTranslations("login");
@@ -31,6 +32,7 @@ export default function Home() {
   function switchMode(next: Mode) {
     setMode(next);
     setError(null);
+    setNotice(false);
     setShowPassword(false);
   }
 
@@ -38,11 +40,18 @@ export default function Home() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     setError(null);
+    setNotice(false);
 
     startTransition(async () => {
       const result = await (isSignUp ? signUp(formData) : signIn(formData));
       if (!result.ok) {
         setError(result.error);
+        return;
+      }
+      if ("pending" in result) {
+        // New accounts wait for admin approval, so send them back to sign in.
+        setMode("signIn");
+        setNotice(true);
         return;
       }
       router.push("/dashboard");
@@ -145,6 +154,11 @@ export default function Home() {
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
+            {notice && (
+              <p className="form-notice" role="status">
+                {t.signUp.pendingNotice}
+              </p>
+            )}
             {error && (
               <p className="form-error" role="alert">
                 {t.errors[error]}

@@ -2,7 +2,9 @@
   "header": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "editProfile": "Edit profile"
+    "editProfile": "Edit profile",
+    "userApprovals": "User approvals",
+    "userApprovalsPending": "User approvals ({count} pending)"
   },
   "sidebar": {
     "heading": "ESG Report",
@@ -14,7 +16,8 @@
   "sections": {
     "general": "Report V1",
     "automatic": "Questionnaire",
-    "manual": "Report V2"
+    "manual": "Report V2",
+    "approvals": "User approvals"
   },
   "footer": {
     "lastUpdate": "Last updated: today, 09:42",
@@ -144,6 +147,39 @@
       "automatic": "Sources synced",
       "manual": "Indicators to confirm",
       "approval": "Awaiting review"
+    }
+  },
+  "approvals": {
+    "description": "Approve new accounts before they can sign in, or remove users.",
+    "refresh": "Refresh",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "User"
+    },
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending",
+      "rejected": "Rejected"
+    },
+    "you": "(you)",
+    "approve": "Approve",
+    "reject": "Reject",
+    "remove": "Remove {name}",
+    "confirmRemove": "Remove {name}? This permanently deletes their account.",
+    "empty": "No users yet.",
+    "loading": "Loading users…",
+    "errors": {
+      "unauthorized": "You no longer have admin access.",
+      "invalid_input": "That request wasn't valid. Please refresh and try again.",
+      "self_action": "You can't change or remove your own account here.",
+      "server_error": "Something went wrong. Please try again."
     }
   }
 }
