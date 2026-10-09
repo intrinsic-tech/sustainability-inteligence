@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  Activity,
   ArrowDownToLine,
   ArrowRight,
   CheckCircle2,
@@ -20,8 +19,6 @@ import {
   PlugZap,
   RefreshCw,
   Save,
-  Search,
-  ShieldUser,
   Sparkles,
   TriangleAlert,
   X,
@@ -44,12 +41,12 @@ const sections: { id: SectionId; icon: LucideIcon }[] = [
 export function DashboardView({ userName }: { userName: string }) {
   const router = useRouter();
   const t = useTranslations("dashboard");
+  const common = useTranslations("common");
   const [activeSection, setActiveSection] = useState<SectionId>("general");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [report, setReport] = useState<DocumentsResponse | null>(null);
   const [manualSaved, setManualSaved] = useState(false);
   const [refreshed, setRefreshed] = useState(false);
-  const [role, setRole] = useState<"admin" | "user">("admin");
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" }).catch(() => undefined);
@@ -74,11 +71,7 @@ export function DashboardView({ userName }: { userName: string }) {
         <a className="app-brand" href="/dashboard">
           <BrandLogo className="app-logo" onLight priority />
         </a>
-        <label className="header-search">
-          <Search size={20} aria-hidden="true" />
-          <span className="sr-only">{t.header.searchLabel}</span>
-          <input type="search" placeholder={t.header.searchPlaceholder} />
-        </label>
+        <h1 className="header-title">{common.brand.full}</h1>
         <div className="header-actions">
           <LanguageSwitcher />
           <span className="header-user">
@@ -112,23 +105,9 @@ export function DashboardView({ userName }: { userName: string }) {
             <X size={20} />
           </button>
         </div>
-        <div className="role-toggle" role="group" aria-label={t.sidebar.viewLabel}>
-          <button
-            className={role === "admin" ? "role-active" : ""}
-            aria-pressed={role === "admin"}
-            onClick={() => setRole("admin")}
-          >
-            <ShieldUser size={20} />
-            {t.sidebar.admin}
-          </button>
-          <button
-            className={role === "user" ? "role-active" : ""}
-            aria-pressed={role === "user"}
-            onClick={() => setRole("user")}
-          >
-            <CircleUserRound size={20} />
-            {t.sidebar.user}
-          </button>
+        <div className="sidebar-heading">
+          <h2>{t.sidebar.heading}</h2>
+          <p>{t.sidebar.headingHint}</p>
         </div>
         <div className="sidebar-divider" />
         <nav className="side-navigation" aria-label={t.sidebar.navLabel}>
@@ -153,15 +132,6 @@ export function DashboardView({ userName }: { userName: string }) {
         </nav>
         <div className="sidebar-lower">
           <div className="sidebar-divider" />
-          <div className="sidebar-period">
-            <span className="period-icon">
-              <Activity size={18} />
-            </span>
-            <span>
-              <small>{t.sidebar.periodLabel}</small>
-              <strong>{t.sidebar.periodValue}</strong>
-            </span>
-          </div>
           <button className="nav-item">
             <CircleHelp size={22} strokeWidth={2} />
             <span>{t.sidebar.support}</span>

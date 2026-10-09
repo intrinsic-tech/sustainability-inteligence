@@ -2,17 +2,12 @@
   "header": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "searchLabel": "Search",
-    "searchPlaceholder": "Search indicators, sources, reports...",
     "editProfile": "Edit profile"
   },
   "sidebar": {
-    "viewLabel": "View",
-    "admin": "Admin",
-    "user": "User",
+    "heading": "ESG Report",
+    "headingHint": "Complete each section to build your report",
     "navLabel": "ESG sections",
-    "periodLabel": "Reporting period",
-    "periodValue": "Fiscal year 2025",
     "support": "Support",
     "logout": "Log out"
   },

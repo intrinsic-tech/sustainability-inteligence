@@ -2,17 +2,12 @@
   "header": {
     "openMenu": "Apri menu",
     "closeMenu": "Chiudi menu",
-    "searchLabel": "Cerca",
-    "searchPlaceholder": "Cerca indicatori, fonti, report...",
     "editProfile": "Modifica profilo"
   },
   "sidebar": {
-    "viewLabel": "Vista",
-    "admin": "Admin",
-    "user": "Utente",
+    "heading": "Report ESG",
+    "headingHint": "Completa ogni sezione per creare il tuo report",
     "navLabel": "Sezioni ESG",
-    "periodLabel": "Periodo di rendicontazione",
-    "periodValue": "Anno fiscale 2025",
     "support": "Supporto",
     "logout": "Esci"
   },
